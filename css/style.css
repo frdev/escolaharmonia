@@ -1,0 +1,17 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.user .btn{
+    margin-top: 7%;
+}
+
+.user .btn.btn-new-user,
+.user .btn.btn-buscar {
+    margin-top: 9%;
+}
+
+.table-usuarios tbody tr td {
+    vertical-align: middle !important;
+}
