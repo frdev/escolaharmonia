@@ -7,11 +7,20 @@ html, body {
     margin-top: 7%;
 }
 
+ul.perfil li {
+    list-style: none;
+    font-size: 16px;
+}
+
 .user .btn.btn-new-user,
+.btn.btn-new-formacao,
 .user .btn.btn-buscar {
     margin-top: 9%;
 }
 
-.table-usuarios tbody tr td {
+.table-usuarios tbody tr td,
+.table-formacoes tbody tr td,
+.table-cursos tbody tr td,
+.table-videos tbody tr td {
     vertical-align: middle !important;
 }

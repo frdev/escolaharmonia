@@ -1,3 +1,6 @@
+<?php
+$acesso = $this->session->userdata('logged');
+?>
         <script type="text/javascript" src="<?=base_url('js/tinymce/tinymce.min.js')?>"></script>
         <script type="text/javascript">tinymce.init({ selector: 'textarea', language : 'pt_BR' });</script>
         <div class="row">
@@ -9,15 +12,9 @@
                 <p><small>* Escrever um resumo sobre suas qualidades, conquistas e história de vida relacionado a carreira.</small></p>
                 <div class="row">
                     <?= form_open('', 'id="formBiografia"') ?>
+                    <input type="hidden" name="usuario_id" value="<?=$acesso['id']?>">
                         <div class="form-group col-md-12">
-                            <?php
-                             $data = array(
-                                    'name'        => 'biografia',
-                                    'id'          => 'biografia',
-                                    'class'       => 'form-control'
-                                );
-                            echo form_textarea($data);
-                            ?>
+                            <textarea name='biografia' id='biografia'><?=$biografia['biografia']?></textarea>
                         </div>
                         <div class="col-md-12">
                             <?php
@@ -41,6 +38,7 @@
                 <p><small>* Cadastrar da seguinte forma: CURSO - INSTITUIÇÃO DE ENSINO</small></p>
                 <div class="row">
                     <?= form_open('', 'id="formNewFormacao"') ?>
+                        <input type="hidden" name="usuario_id" value="<?=$acesso['id']?>">
                         <div class="form-group col-md-6">
                             <?php
                             echo form_label('Descrição', 'descricao');
@@ -70,9 +68,8 @@
                             <?php
                             echo form_button(array(
                                 'type'    => 'submit',
-                                'class'   => 'btn btn-md btn-primary btn-formacoes',
-                                'content' => 'Cadastrar',
-                                'style'   => 'margin-top: 6.7%;'
+                                'class'   => 'btn btn-md btn-primary btn-new-formacao',
+                                'content' => 'Cadastrar'
                             ));
                             ?>
                         </div>
@@ -81,16 +78,35 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-12">
+                <h3>Formações Cadastradas</h3>
+            </div>
+            <div class="col-md-12">
+                <table class="table table-bordered table-formacoes">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Descrição</th>
+                            <th class="text-center">Conclusão</th>
+                            <th class="text-center">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if(!empty($formacoes)) : ?>
+                            <?php foreach($formacoes as $formacao) : ?>
+                                <tr>
+                                    <td class="text-center"><?=$formacao['descricao']?></td>
+                                    <td class="text-center"><?=date('Y', strtotime($formacao['data_conclusao']))?></td>
+                                    <td class="text-center"><button type="button" class="btn btn-md btn-default btn-trash" title="Excluir" data-id="<?=$formacao['id']?>"><i class="fas fa-trash"></i></button></td>
+                                </tr>
+                            <?php endforeach ?>
+                        <?php else : ?>
+                            <tr>
+                                <td col-span='3'><strong>Não há formações cadastradas.</strong></td>
+                            </tr>
+                        <?php endif ?>
+                    </tbody>
+                </table>
+            </div>
             <hr>
         </div>
-        <div class="row">
-            <div class="col-md-12 list-subcategorias" style="display: none;">
-                <h3 class="nome-categoria"></h3>
-                <ul class="list-group">
-                    
-                </ul>
-            </div>
-        </div>
-        
-
         <script src="<?=base_url('js/perfil_professores.js')?>"></script>

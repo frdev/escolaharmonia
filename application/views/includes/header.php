@@ -79,7 +79,6 @@ if(empty($acesso)){
                             <ul class="dropdown-menu">
                                 <?php if($acesso['nivel_id'] == 2) : ?>
                                 <li><a href="<?=base_url('cursos/publicar')?>">Publicar</a></li>
-                                <li><a href="<?=base_url('cursos/publicados')?>">Publicados</a></li>                                    
                                 <?php else : ?>
                                 <li><a href="cursos/matriculados">Matriculados</a></li>
                                 <?php endif ?>
@@ -99,7 +98,7 @@ if(empty($acesso)){
                             <li><a href="<?=base_url('login/signout')?>">Sair</a></li>
                         </ul>
                     <p class="navbar-text">
-                      Desenvolvido por<a href="http://www.frdevpro.com/portfolio"> FRDev</a>
+                      Desenvolvido por<a href="http://www.frdevpro.com/portfolio" target="_blank"> FRDev</a>
                     </p>
                 </div>
             </div>

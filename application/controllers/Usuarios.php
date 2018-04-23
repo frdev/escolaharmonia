@@ -206,8 +206,8 @@ class Usuarios extends CI_Controller {
     {
         # Cria Array do usuário
         $usuario['usuario'] = array(
-            'nome'  => $this->input->post('nome'),
-            'email' => $this->input->post('email'),
+            'nome'     => $this->input->post('nome'),
+            'email'    => $this->input->post('email'),
             'nivel_id' => $this->input->post('nivel_acesso')
         );
         # Carrega as subcategorias do professor
