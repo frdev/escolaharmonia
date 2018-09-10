@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class categorias_model extends CI_Model {
+class Categorias_model extends CI_Model {
 
     public function getAll(){
         return $this->db->order_by('descricao', 'asc')->get('categorias')->result_array();
@@ -21,6 +21,15 @@ class categorias_model extends CI_Model {
                 return false;
             }
         }
+    }
+
+    public function getCategoriasByCursosPublicados(){
+        $this->db->select('c.*');
+        $this->db->join('subcategorias s', 's.categoria_id=c.id');
+        $this->db->join('cursos', 'cursos.subcategoria_id=s.id');
+        $this->db->where('cursos.status', 1);
+        $this->db->group_by('c.id');
+        return $this->db->order_by('c.descricao', 'asc')->get('categorias c')->result_array();
     }
 
 }

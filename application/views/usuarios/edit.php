@@ -12,6 +12,7 @@
             break;
     }
 ?>
+    <div data-controller="usuarios">
         <div class="row">
             <h2 class="text-center">Editar <?=$tipo_usuario?> - <?=$usuario['nome']?></h2>
             <hr>
@@ -128,4 +129,4 @@
                 <?= form_close() ?>
             </div>
         </div>
-        <script src="<?=base_url('js/usuario.js')?>"></script>
+    </div>

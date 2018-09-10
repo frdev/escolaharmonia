@@ -13,13 +13,7 @@ class Home extends CI_Controller {
 
     public function index(){
         $acesso = $this->session->userdata('logged');
-        if($acesso['nivel_id'] == 1){
-            redirect('usuarios/customers');
-        }
-        # Carrega a view da página home
-        $this->load->view('includes/header');
-        $this->load->view('home/index');
-        $this->load->view('includes/footer');
+        redirect('cursos/');
     }
 }
 

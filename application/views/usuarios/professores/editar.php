@@ -1,8 +1,7 @@
 <?php
 $acesso = $this->session->userdata('logged');
-?>
-        <script type="text/javascript" src="<?=base_url('js/tinymce/tinymce.min.js')?>"></script>
-        <script type="text/javascript">tinymce.init({ selector: 'textarea', language : 'pt_BR' });</script>
+?> 
+    <div data-controller="professores">
         <div class="row">
             <h2 class="text-center">Biografia</h2>
             <hr>
@@ -109,4 +108,6 @@ $acesso = $this->session->userdata('logged');
             </div>
             <hr>
         </div>
-        <script src="<?=base_url('js/perfil_professores.js')?>"></script>
+    </div>
+    <script type="text/javascript" src="<?=base_url('js/tinymce/tinymce.min.js')?>"></script>
+    <script type="text/javascript">tinymce.init({ selector: 'textarea', language : 'pt_BR' });</script>

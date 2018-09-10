@@ -8,11 +8,11 @@ class Perfil extends CI_Controller {
             redirect(base_url('home/'));
         }
         # Carrega Model
-        $this->load->model('perfil_professores_model');
+        $this->load->model('professores_model');
         # Retorna os dados para visualização do Perfil do Professor
-        $dados = $this->perfil_professores_model->getProfessorById($id);
+        $dados = $this->professores_model->getProfessorById($id);
         $this->load->view('includes/header');
-        $this->load->view('usuarios/perfil_professores/index', $dados);
+        $this->load->view('usuarios/professores/index', $dados);
         $this->load->view('includes/footer');
     }
 
@@ -20,14 +20,14 @@ class Perfil extends CI_Controller {
         # Recupera os dados da sessao
         $acesso = $this->session->userdata('logged');
         # Carrega model
-        $this->load->model('perfil_professores_formacoes_model');
+        $this->load->model('formacoes_model');
         # Recupera formacoes
-        $dados['formacoes'] = $this->perfil_professores_formacoes_model->getFormacoes($acesso['id']);
+        $dados['formacoes'] = $this->formacoes_model->getFormacoes($acesso['id']);
         # Carrega model
-        $this->load->model('perfil_professores_model');
-        $dados['biografia'] = $this->perfil_professores_model->getBiografia($acesso['id']);
+        $this->load->model('professores_model');
+        $dados['biografia'] = $this->professores_model->getBiografia($acesso['id']);
         $this->load->view('includes/header');
-        $this->load->view('usuarios/perfil_professores/editar', $dados);
+        $this->load->view('usuarios/professores/editar', $dados);
         $this->load->view('includes/footer');
     }
 
@@ -36,8 +36,8 @@ class Perfil extends CI_Controller {
             'usuario_id' => $this->input->post('usuario_id'),
             'biografia'  => $this->input->post('biografia')
         );
-        $this->load->model('perfil_professores_model');
-        $retorno = $this->perfil_professores_model->save($biografia);
+        $this->load->model('professores_model');
+        $retorno = $this->professores_model->save($biografia);
         echo json_encode($retorno);
     }
 
@@ -48,14 +48,14 @@ class Perfil extends CI_Controller {
             'data_conclusao' => $this->input->post('conclusao')
         );
         # Carrega a model
-        $this->load->model('perfil_professores_formacoes_model');
-        $retorno = $this->perfil_professores_formacoes_model->save($formacao);
+        $this->load->model('formacoes_model');
+        $retorno = $this->formacoes_model->save($formacao);
         echo json_encode($retorno);
     }
 
     public function deleteFormacao(){
-        $this->load->model('perfil_professores_formacoes_model');
-        $retorno = $this->perfil_professores_formacoes_model->delete($this->input->post('formacao_id'));
+        $this->load->model('formacoes_model');
+        $retorno = $this->formacoes_model->delete($this->input->post('formacao_id'));
         echo json_encode($retorno);
     }
     

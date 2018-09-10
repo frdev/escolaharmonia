@@ -6,18 +6,14 @@ class Categorias extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $acesso = $this->session->userdata('logged');
-        if($acesso['nivel_id'] != 1){
+        if($acesso['tipo'] != 'ADMIN'){
             redirect(base_url());
         }
     }
 
     public function index(){
         $this->load->model('categorias_model');
-        $categorias          = $this->categorias_model->getAll();
-        $dados['categorias'][''] = 'Selecione...';
-        foreach($categorias as $categoria){
-            $dados['categorias'][$categoria['id']] = $categoria['descricao'];
-        }
+        $dados['categorias'] = $this->categorias_model->getAll();
         # Carrega a view da página
         $this->load->view('includes/header');
         $this->load->view('categorias/categorias', $dados);

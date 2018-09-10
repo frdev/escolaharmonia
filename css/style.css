@@ -24,3 +24,14 @@ ul.perfil li {
 .table-videos tbody tr td {
     vertical-align: middle !important;
 }
+
+.head-categoria {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.head-subcategoria {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #EEE;
+}

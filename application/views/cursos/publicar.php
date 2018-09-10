@@ -1,3 +1,4 @@
+    <div data-controller="cursos">
         <div class="row">
             <h2 class="text-center">Publicar Curso</h2>
             <hr>
@@ -30,6 +31,12 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
+                            <small>* Descrição do curso que será apresentado, tal como ementa e plano de ensino.</small>
+                            <textarea name='descricao_curso' id='descricao_curso'></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
                             <?php
                             echo form_button(array(
                                 'type'    => 'submit',
@@ -48,6 +55,7 @@
         <div class="row">
             <div class="col-md-12"> 
                 <h3>Cursos Cadastrados</h3>
+                <small>* Para publicar um curso, deve-se ter pelo menos um vídeo vinculado ao mesmo. Caso esteja acontecendo erro na publicação, verifique se existe alguma vídeo aula publicada.</small>
                 <table class="table table-bordered table-cursos">
                     <thead>
                         <tr>
@@ -91,5 +99,6 @@
                 </table>
             </div>  
         </div>
-
-        <script src="<?=base_url('js/cursos.js')?>"></script>
+    </div>
+    <script type="text/javascript" src="<?=base_url('js/tinymce/tinymce.min.js')?>"></script>
+    <script type="text/javascript">tinymce.init({ selector: 'textarea', language : 'pt_BR' });</script>

@@ -6,7 +6,7 @@ class Usuarios extends CI_Controller {
     function __construct(){
         parent::__construct();
         $acesso = $this->session->userdata('logged');
-        if($acesso['nivel_id'] != 1){
+        if($acesso['tipo'] != 'ADMIN'){
             redirect(base_url('home/'));
         }
     }
@@ -251,9 +251,9 @@ class Usuarios extends CI_Controller {
         # Se o usuário for professor, recupera os dados de categorias/subcategorias
         if($dados['usuario']['nivel_id'] == 2){
             # Model das cat/subs do professor
-            $this->load->model('perfil_professores_subcategorias_model');
-            $dados['usuario']['categoria']     = $this->perfil_professores_subcategorias_model->getCategoryByProfessorId($id);
-            $subs_prof                         = $this->perfil_professores_subcategorias_model->getSubByProfessorId($id);
+            $this->load->model('professores_subcategorias_model');
+            $dados['usuario']['categoria']     = $this->professores_subcategorias_model->getCategoryByProfessorId($id);
+            $subs_prof                         = $this->professores_subcategorias_model->getSubByProfessorId($id);
             $dados['usuario']['subcategorias'] = [];
             foreach($subs_prof as $sub) :
                 $dados['usuario']['subcategorias'][] = $sub['subcategoria_id']; 

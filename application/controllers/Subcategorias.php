@@ -19,4 +19,10 @@ class Subcategorias extends CI_Controller {
         echo $this->subcategorias_model->save($this->input->post('categoria'), $this->input->post('subcategoria'));
     }
 
+    public function getSubsByCatIdAndCursosPublicados(){
+        $this->load->model('subcategorias_model');
+        $subcategorias = $this->subcategorias_model->getSubsByCatIdAndCursosPublicados($this->input->post('categoria_id'));
+        echo json_encode($subcategorias);
+    }
+
 }

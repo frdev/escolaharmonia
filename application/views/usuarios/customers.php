@@ -1,3 +1,4 @@
+    <div data-controller="usuarios">    
         <div class="row">
             <h2 class="text-center">Customers</h2>
             <hr>
@@ -122,4 +123,4 @@
                 <?php echo $links ?>
             <?php } ?>
         </div>
-        <script src="<?=base_url('js/usuario.js')?>"></script>
+    </div>

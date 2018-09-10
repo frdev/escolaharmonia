@@ -1,4 +1,14 @@
-RewriteEngine On
+RewriteEngine on
+
+RewriteCond %{HTTPS} off
+RewriteCond %{REQUEST_URI} (sale|success|cancel) [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTPS} on
+RewriteCond %{REQUEST_URI} !(static|sale|success|cancel) [NC]
+RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond $1 !^(index\.php|resources|robots\.txt|static) [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
