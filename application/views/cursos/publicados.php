@@ -1,7 +1,7 @@
 <?php
 $acesso = $this->session->userdata('logged');
 ?>       
-    <div class="publicados">
+    <div data-controller="publicados">
         <div class="row">
             <h2 class="text-center">Cursos Harmonia</h2>
             <hr>
@@ -42,7 +42,7 @@ $acesso = $this->session->userdata('logged');
                                         <li class="list-group-item head-subcategoria"><?=$subcategoria['descricao']?></li>
                                         <?php foreach($subcategoria['cursos'] as $curso) : ?>
                                             <li class="list-group-item" data-curso="<?=$curso['id']?>"><?=$curso['titulo']?> - Prof <?=$curso['nome']?> 
-                                                <?php if($acesso['nivel_id'] == 3) : ?>
+                                                <?php if($acesso['tipo'] == 'ALUNO') : ?>
                                                     <?php
                                                         $mat = false;
                                                         foreach($cursos_aluno as $matricula) :

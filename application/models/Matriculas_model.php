@@ -12,7 +12,7 @@ class Matriculas_model extends CI_Model {
         $this->db->select('u.*');
         $this->db->where('cm.curso_id', $curso_id);
         $this->db->order_by('u.nome', 'asc');
-        $this->db->join('usuarios u', 'u.id=cm.usuario_id');
+        $this->db->join('usuarios u', 'u.id=cm.aluno_id');
         $this->db->limit($limit, $start);
         return $this->db->get('matriculas cm')->result_array();
     }
